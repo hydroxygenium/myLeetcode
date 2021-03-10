@@ -192,21 +192,127 @@
 
 #14th problem
 #status: solved
-class Solution:
-    def longestCommonPrefix(self, strs: list[str]) -> str:
-        if len(strs) == 0:
-            return ""
-        if len(strs) == 1:
-            return strs[0]
-        # set prefix as the first element in the list
-        prefix = strs[0]
-        prefix_length = len(prefix)
-        # iterate and modify the prefix as per the element in the list
-        for i in strs[1:]:
-            while prefix!=i[0:prefix_length]:
-                prefix = prefix[0:prefix_length-1]
-                prefix_length = prefix_length-1
+# class Solution:
+#     def longestCommonPrefix(self, strs: list[str]) -> str:
+#         if len(strs) == 0:
+#             return ""
+#         if len(strs) == 1:
+#             return strs[0]
+#         # set prefix as the first element in the list
+#         prefix = strs[0]
+#         prefix_length = len(prefix)
+#         # iterate and modify the prefix as per the element in the list
+#         for i in strs[1:]:
+#             while prefix!=i[0:prefix_length]:
+#                 prefix = prefix[0:prefix_length-1]
+#                 prefix_length = prefix_length-1
                 
-                if len(prefix) == 0:
-                    return ""
-        return prefix
+#                 if len(prefix) == 0:
+#                     return ""
+#         return prefix
+
+
+#15th problem
+#status: solved but slow
+# from itertools import permutations
+
+# def allComb(string, lenght: int):
+#     '''
+#     nothing
+#     '''
+#     outlst = []
+#     for comb in permutations(string, lenght):
+#         outlst.append(comb)
+#     outlst = list(map(list, outlst))
+
+#     return sorted(outlst)
+
+
+# class Solution:
+# 	def threeSum(self, nums: list[int]) -> list[list[int]]:
+# 		triplets = allComb(nums, 3)
+# 		validTriplets = [i for i in triplets if sum(i)==0]
+
+# 		for j in range (0, len(validTriplets)):
+# 			validTriplets[j] = sorted(validTriplets[j])
+
+# 		validOut = []
+# 		for i in validTriplets:
+# 			if i not in validOut:
+# 				validOut.append(i)
+
+# 		return validOut
+# #alternative and fast solution
+# class Solution:
+#     def threeSum(self, nums: list[int]) -> list[list[int]]:
+#         if len(nums) < 3:
+#             return []
+#         elif len(nums) == 3 and sum(nums) == 0:
+#             return [nums]
+
+#         zeros = 0
+#         negatives = {} # {value => repeat_flag} 
+#         positives = {} # {value => repeat_flag}
+
+#         for x in nums:
+#             if x < 0:
+#                 negatives[x] = 0 if x not in negatives else 1
+#             elif x > 0:
+#                 positives[x] = 0 if x not in positives else 1
+#             else:
+#                 zeros += 1
+
+#         negatives = dict(sorted(negatives.items(), reverse=True))
+#         positives = dict(sorted(positives.items()))
+        
+#         result_for_zeros = []
+
+#         if zeros > 0:
+#             if zeros >= 3:
+#                 result_for_zeros.append([0, 0, 0])
+                
+#             if len(negatives) < len(positives):
+#                 for negative in negatives:
+#                     if -negative in positives:
+#                         result_for_zeros.append([0, negative, -negative])
+#             else:
+#                 for positive in positives:
+#                     if -positive in negatives:
+#                         result_for_zeros.append([0, -positive, positive])
+                        
+#         if len(negatives) == 0 or len(positives) == 0:
+#             return result_for_zeros           
+
+#         # search for positive (a_list) + negative + negative (bc_list) = 0
+#         # search for negative (a_list) + positive + positive (bc_list) = 0
+#         return result_for_zeros \
+#             + self.find(negatives, positives, True) \
+#             + self.find(positives, negatives, False) 
+
+#     def find(self, a_list, bc_list, is_negative):
+#         result = []
+ 
+#         for a in a_list:
+#             processed = set()
+            
+#             for b in bc_list:
+#                 if b in processed:
+#                     continue
+
+#                 if is_negative:
+#                     if b >= -a:
+#                         break
+#                 else:
+#                     if -b >= a:
+#                         break
+
+#                 c = -(a + b)
+
+#                 if c in bc_list:
+#                     if c == b and bc_list[c] == 0:
+#                         continue
+
+#                     processed.add(c)
+#                     result.append([a, b, c])
+
+#         return result
