@@ -316,3 +316,39 @@
 #                     result.append([a, b, c])
 
 #         return result
+
+
+#15th problem
+#status: not solved
+
+from itertools import permutations
+
+def allComb(string, lenght: int):
+    '''
+    nothing
+    '''
+    outlst = []
+    for comb in permutations(string, lenght):
+        outlst.append(sum(comb))
+
+    return outlst
+
+class Solution:
+    def threeSumClosest(self, nums: list[int], target: int) -> int:
+        closest = 0
+        diff = 100000000000
+        combs = allComb(nums, 3)
+        
+        if target < 0:
+	        for i in combs:
+	        	d = abs(target) + abs(i)
+	        	if abs(d) < diff:
+	        		diff = abs(d)
+	        		closest = i
+        if target >= 0:
+	        for i in combs:
+	        	d = target - abs(i)
+	        	if abs(d) < diff:
+	        		diff = d
+	        		closest = i
+        return closest
