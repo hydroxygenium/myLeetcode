@@ -319,36 +319,108 @@
 
 
 #15th problem
-#status: not solved
+#status: solved
+# class Solution:
+#     def threeSumClosest(self, nums: list[int], target: int) -> int:
+#         gap = 0
+#         sign = 1
+#         d = {}
+#         for i in range(len(nums)):
+#             d[nums[i]] = i
+            
+#         while gap < float('inf'):
+#             target += sign * gap
+#             sign *= -1
+#             gap += 1
+            
+#             for i in range(len(nums)):
+#                 sectarget = target - nums[i]
+#                 for j in range(i+1, len(nums)):
+#                     need = sectarget - nums[j]
+#                     if need in d and d[need] != i and d[need] != j:
+#                         return target
 
-from itertools import permutations
 
-def allComb(string, lenght: int):
-    '''
-    nothing
-    '''
-    outlst = []
-    for comb in permutations(string, lenght):
-        outlst.append(sum(comb))
-
-    return outlst
-
-class Solution:
-    def threeSumClosest(self, nums: list[int], target: int) -> int:
-        closest = 0
-        diff = 100000000000
-        combs = allComb(nums, 3)
+#16th problem
+#status: solved
+# class Solution:
+#     def letterCombinations(self, digits: str) -> List[str]:
+#         if digits == "": return []
         
-        if target < 0:
-	        for i in combs:
-	        	d = abs(target) + abs(i)
-	        	if abs(d) < diff:
-	        		diff = abs(d)
-	        		closest = i
-        if target >= 0:
-	        for i in combs:
-	        	d = target - abs(i)
-	        	if abs(d) < diff:
-	        		diff = d
-	        		closest = i
-        return closest
+#         helper = ["abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]
+# 		# So we don't neet to covert string to interger every time.
+# 		# Optimize: helper[int(digits[i]) - 2] --> helper[dic[digits[i]]]
+#         dic = {"2":2, "3":3, "4":4, "5":5, "6":6, "7":7, "8":8, "9":9}
+        
+#         res_q = collections.deque([""])
+        
+# 		# pop out every elements in queue, add the character at the end of each string,
+# 		# then append it back to the queue.
+#         for i in range(len(digits)):
+#             length = len(res_q)
+#             for _ in range(length):
+#                 s = res_q.popleft()
+#                 for c in helper[dic[digits[i]] - 2]:
+#                     res_q.append(s + c)
+                    
+#         return res_q
+                
+#   Runtime: 28 ms, faster than 86.01% of Python3 online submissions for Letter Combinations of a Phone Number.
+#   Memory Usage: 13.9 MB, less than 99.99% of Python3 online submissions for Letter Combinations of a Phone Number.
+#   By Fu
+
+
+#17th problem
+#status: solved but slow
+# from itertools import permutations
+
+# def allComb(string, lenght: int):
+#     '''
+#     nothing
+#     '''
+#     outlst = []
+#     for comb in permutations(string, lenght):
+#         outlst.append(comb)
+#     outlst = list(map(list, outlst))
+
+#     return sorted(outlst)
+
+
+# class Solution:
+# 	def fourSum(self, nums: list[int], target: int) -> list[list[int]]:
+# 		triplets = allComb(nums, 4)
+# 		validTriplets = [i for i in triplets if sum(i)==target]
+
+# 		for j in range (0, len(validTriplets)):
+# 			validTriplets[j] = sorted(validTriplets[j])
+
+# 		validOut = []
+# 		for i in validTriplets:
+# 			if i not in validOut:
+# 				validOut.append(i)
+
+# 		return validOut
+
+#alternativeve and faster
+
+# class Solution:
+#     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+#         quadruplets = set()
+#         hashtable = {}
+        
+#         for i in range(len(nums)):
+#             for j in range(i + 1, len(nums)):
+#                 currSum = nums[i] + nums[j]
+#                 if target - currSum in hashtable:
+#                     for pair in hashtable[target - currSum]:
+#                         sortedPair = sorted([nums[i], nums[j], pair[0], pair[1]])
+#                         quadruplets.add(tuple(sortedPair))
+                        
+#             for k in range(i):
+#                 pairSum = nums[i] + nums[k]
+#                 if pairSum not in hashtable:
+#                     hashtable[pairSum] = [[nums[i], nums[k]]]
+#                 else:
+#                     hashtable[pairSum].append([nums[i], nums[k]])
+
+#         return quadruplets
