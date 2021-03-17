@@ -424,3 +424,48 @@
 #                     hashtable[pairSum].append([nums[i], nums[k]])
 
 #         return quadruplets
+
+
+#18th problem
+#status: solved
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+# class Solution:
+#     def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+#         first = second = head
+#         for _ in range(n):
+#             first = first.next
+            
+#         if not first:
+#             return head.next
+#         while first.next:
+#             first = first.next
+#             second = second.next
+        
+#         second.next = second.next.next
+#         return head
+
+
+#19th problem
+#status: not solved
+# class Solution:
+#     def isValid(self, s: str) -> bool:
+#         brackets_open = ('(', '[', '{', '<')
+#         brackets_closed = (')', ']', '}', '>')
+#         stack = []
+#         for i in s:
+#             if i in brackets_open:
+#                 stack.append(i)
+#             if i in brackets_closed:    
+#                 if len(stack) == 0:
+#                     return False
+#                 index = brackets_closed.index(i)
+#                 open_bracket = brackets_open[index]
+#                 if stack[-1] == open_bracket:
+#                     stack = stack[:-1]  
+#                 else: 
+#                     return False  
+#         return (not stack)
