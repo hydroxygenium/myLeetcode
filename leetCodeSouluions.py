@@ -318,7 +318,7 @@
 #         return result
 
 
-#15th problem
+#16th problem
 #status: solved
 # class Solution:
 #     def threeSumClosest(self, nums: list[int], target: int) -> int:
@@ -341,7 +341,7 @@
 #                         return target
 
 
-#16th problem
+#17th problem
 #status: solved
 # class Solution:
 #     def letterCombinations(self, digits: str) -> List[str]:
@@ -370,7 +370,7 @@
 #   By Fu
 
 
-#17th problem
+#18th problem
 #status: solved but slow
 # from itertools import permutations
 
@@ -426,7 +426,7 @@
 #         return quadruplets
 
 
-#18th problem
+#19th problem
 #status: solved
 # Definition for singly-linked list.
 # class ListNode:
@@ -449,8 +449,8 @@
 #         return head
 
 
-#19th problem
-#status: not solved
+#20th problem
+#status: solved
 # class Solution:
 #     def isValid(self, s: str) -> bool:
 #         brackets_open = ('(', '[', '{', '<')
@@ -469,3 +469,63 @@
 #                 else: 
 #                     return False  
 #         return (not stack)
+
+
+#21th problem
+#status: solved
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+# class Solution:
+#     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+# # when one of the lists is empty we simply return the other list
+#         if not l1:
+#             return l2
+#         elif not l2:
+#             return l1
+        
+#         # we need a placeholder node where we build our merged linked list
+#         placeholder = ListNode(0)
+#         # we need a pointer at its head to keep the track of it.
+#         head = placeholder
+        
+#         while (l1 and l2):
+#             if l1.val <= l2.val:
+#                 placeholder.next = l1 # attach the smaller node to the dummy node
+#                 l1 = l1.next # move the list forward
+#             else:
+#                 placeholder.next = l2
+#                 l2 = l2.next
+            
+#             placeholder = placeholder.next # since a node is attached we need to increment the pointer
+        
+#         # at end there may be remaining items in any of the list. Attach them
+#         if not l1:
+#             placeholder.next = l2
+#         else:
+#             placeholder.next = l1
+        
+#         # head is pointing to the dummy node so we must return the actual node 
+#         # dummy -> merged_linked_list
+#         return head.next
+
+
+#22th problem
+#status: solved
+# class Solution:
+#     def generateParenthesis(self, n: int) -> list[str]:
+#         result = []
+#         def dfs(s, now):
+#             cnt = s.count("(")
+#             if len(s) == 2*n:
+#                 return result.append(s)
+#             if now == 0:
+#                 dfs(s+"(", now+1 )
+#             else :
+#                 if cnt < n:
+#                     dfs(s+"(",now+1)
+#                 dfs(s+")",now-1)
+#         dfs("(",1)
+#         return result
