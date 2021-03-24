@@ -529,3 +529,64 @@
 #                 dfs(s+")",now-1)
 #         dfs("(",1)
 #         return result
+
+
+#23th problem
+#status: solved
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+# class Solution:
+#     def mergeKLists(self, lists):
+#         newlists = []
+#         for li in lists:
+#             if li != None: 
+#                 newlists.append(li)
+
+#         if len(newlists) == 0:
+#             return None
+#         elif len(newlists) == 1:
+#             return newlists[0]
+#         else:
+#             while(len(newlists) >= 2):
+#                 list1 = newlists.pop()
+#                 list2 = newlists.pop()
+#                 pointer = ListNode(-1)
+#                 pointer_head = pointer 
+#                 while(list1 != None and list2 !=None):
+#                     if list1.val <= list2.val:
+#                         pointer.next = list1
+#                         list1 = list1.next
+#                     else:
+#                         pointer.next = list2
+#                         list2 = list2.next
+#                     pointer = pointer.next
+
+#                 if list1 == None:
+#                     pointer.next = list2
+#                 else:
+#                     pointer.next = list1
+#                 pointer = pointer.next
+                
+#                 newlists.insert(0, pointer_head.next)
+                
+#         return newlists[0]
+
+
+#24th problem
+#status: solved
+# class Solution:
+#     def swapPairs(self, head: ListNode) -> ListNode:
+#             if not head or not head.next: #if list is empty or list.lenght() == 1
+#                 return head
+#             p1, p2 = head #pointers
+
+#             while p1 != None:
+#                 if not p1.next: #in case if list.lenght() is odd
+#                     break
+#                     p2 = p1.next #p2 is always must be next
+#                     p1.val, p2.val, p1 = p2.val, p1.val, p1.next.next # for swapping   # also for updating p1
+            
+#             return head
