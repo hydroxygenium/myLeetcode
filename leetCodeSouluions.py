@@ -590,3 +590,46 @@
 #                     p1.val, p2.val, p1 = p2.val, p1.val, p1.next.next # for swapping   # also for updating p1
             
 #             return head
+
+
+#25th problem
+#status: solved
+# class Solution:
+#     def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
+#         if k == 1:
+#             return head
+#         pre_head = ListNode()
+#         ph = pre_head
+#         p = head
+#         p2 = head
+#         cnt = 0
+#         while p:
+#             p = p.next
+#             cnt += 1
+#             if cnt == k:
+#                 cnt = 0
+#                 end = p2
+#                 prev = p2
+#                 p2 = p2.next
+#                 while p2 != p:
+#                     tmp = p2.next
+#                     p2.next = prev
+#                     prev = p2
+#                     p2 = tmp
+#                 ph.next = prev
+#                 ph = end
+#         ph.next = p2
+#         return pre_head.next
+
+
+#26th problem
+#status: solved
+# class Solution:
+#     def removeDuplicates(self, nums: list[int]) -> int:
+#         i = 0
+#         for _ in range (len(nums)-1):
+#             if nums[i] == nums[i+1]:
+#                 del nums[i]
+#             else:
+#                 i += 1
+#         return len(nums)
