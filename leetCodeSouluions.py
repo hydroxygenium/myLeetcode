@@ -633,3 +633,67 @@
 #             else:
 #                 i += 1
 #         return len(nums)
+
+
+#27th problem
+#status: solved
+# class Solution:
+#     def removeElement(self, nums: List[int], val: int) -> int:
+#         i = 0
+#         for _ in range (len(nums)):
+#             if nums[i] == val:
+#                 del nums[i]
+#             else:
+#                 i += 1
+#         return len(nums)
+
+
+#28th problem
+#status: solved
+# class Solution:
+#     def strStr(self, haystack: str, needle: str) -> int:
+#         if haystack == '' and needle == '':
+#             return 0
+        
+#         if needle not in haystack:
+#             return -1
+
+#         ln = len(needle)
+#         for i in range(len(haystack)):
+#             if haystack[i:i+ln] == needle:
+#                 lst.append(i)
+#         return -1
+
+
+#29th problem
+#status: solved
+# import math
+# class Solution:
+#     def divide(self, dividend: int, divisor: int) -> int:
+#         MAX = 2**31
+#         sign = (dividend>=0 and divisor>0) or (dividend<=0 and divisor<0)
+#         ans = math.floor(abs(dividend)/abs(divisor))
+#         if (not sign and ans>MAX) or (sign and ans>(MAX -1)) :
+#             ans = MAX - 1   
+#         return ans if sign else -ans
+
+
+#30th problem
+#status: solved
+# class Solution:
+#     def findSubstring(self, s: str, words: List[str]) -> List[int]:
+#         from collections import Counter
+
+#         word_len = len(words[0])
+#         words_len_sum, word_counter = word_len*len(words), Counter(words)
+
+        
+#         def substring_has_words(s):
+#             return Counter([s[i:i+word_len] for i in range(0, len(s), word_len)]) == word_counter
+        
+#         res = []
+#         for i in range(len(s)-words_len_sum+1):
+#             if substring_has_words(s[i: i+words_len_sum]):
+#                 res.append(i)
+        
+#         return res
