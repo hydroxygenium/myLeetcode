@@ -802,3 +802,51 @@
 #             else:
 #                 right = mid -1
 #         return [-1,-1]
+
+
+# 35th problem 
+# status: solved
+# class Solution:
+#     def searchInsert(self, nums: list[int], target: int) -> int:
+#         nums.append(target)
+#         nums.sort()
+#         return nums.index(target)
+
+
+# 36th problem
+# status: solved
+# def isValid(lst):
+#     for ls in lst:
+#         l = set(ls)
+#         l.discard('.')
+#         while l:
+#             if ls.count(l.pop())>1:
+#                 return False
+#     return True
+# class Solution:
+#     def isValidSudoku(self, board: list[list[str]]) -> bool:
+#         squares = []
+#         for k in range(0,9,3):
+#             for i in range(0,9,3):
+#                 temp = []
+#                 temp0 = board[i:i+3]
+#                 for j in temp0:
+#                     temp += j[k:k+3]
+#                 squares.append(temp)
+
+#         columns = []
+#         for q in range(9):
+#             columns.append([b[q] for b in board])
+
+
+#         if not isValid(squares):
+#             return False
+
+#         if not isValid(board):
+#             return False
+
+#         if not isValid(columns):
+#             return False
+
+
+#         return True
