@@ -697,3 +697,108 @@
 #                 res.append(i)
         
 #         return res
+
+
+#31th problem
+#status: solved
+# class Solution:
+#     def nextPermutation(self, nums: list[int]) -> None:
+#         """
+#         Do not return anything, modify nums in-place instead.
+#         """
+        
+#         length = len(nums)
+        
+#         # Edge case.
+#         if length <=2:             
+#             return nums.reverse()
+          
+#         j = length -2 
+#         i = length -1
+        
+#         # Taking eg [1,5,2,4,3] 
+        
+#         # This loop is for finding index where ascending order from last index is break
+#          # j will be at 2 index
+#         while j>=0 and nums[j]>=nums[j+1]:
+#             j-=1
+        
+#         # for cases such as [3,2,1]
+#         if j==-1:
+#             return nums.reverse()
+        
+#         # This loop is to find index of next big element than index j
+#         # i will be at index 4 
+#         while i>=0  and nums[i]<=nums[j]:
+#             i-=1
+        
+                              
+#         #after swapping [1,5,3,4,2]
+#         nums[i],nums[j]= nums[j],nums[i]
+        
+#         #reversing element after swapping 
+#         #[1,5,3,2,4]
+#         nums[j+1:] = nums[:j:-1]  
+
+
+
+#32th problem
+#status: solved
+# class Solution:
+#     def longestValidParentheses(self, s: str) -> int:
+#         l = r = 0
+#         res = 0
+#         for ch in s:
+#             if ch == '(':
+#                 l += 1
+#             else:
+#                 r += 1
+#             if l == r:
+#                 res = max(res, r * 2)
+#             elif r > l:
+#                 l = r = 0
+#         l = r = 0
+#         for ch in reversed(s):
+#             if ch == ')':
+#                 l += 1
+#             else:
+#                 r += 1
+#             if l == r:
+#                 res = max(res, r * 2)
+#             elif r > l:
+#                 l = r = 0
+#         return res
+
+
+# 33th problem 
+# status: solved
+# class Solution:
+#     def search(self, nums: list[int], target: int) -> int:
+#         if target in nums:
+#             return nums.index(target)
+#         return -1
+
+
+# 34th problem
+# status: solved
+# class Solution:
+#     def searchRange(self, nums: List[int], target: int) -> List[int]:
+#         # find index of the target
+#         left,right = 0,len(nums)-1
+#         while left <= right:
+#             mid = (left+right)//2
+#             if nums[mid] == target:
+#                 # to find left index
+#                 leftindex = mid
+#                 while leftindex >= 0 and nums[leftindex] == target:
+#                     leftindex -= 1
+#                 # to find right index
+#                 rightindex = mid
+#                 while rightindex < len(nums) and nums[rightindex] == target:
+#                     rightindex += 1
+#                 return [leftindex+1,rightindex-1]
+#             elif nums[mid] < target:
+#                 left = mid + 1
+#             else:
+#                 right = mid -1
+#         return [-1,-1]
