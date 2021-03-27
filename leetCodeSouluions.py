@@ -850,3 +850,94 @@
 
 
 #         return True
+
+
+# 37th problem 
+# status: solved
+# class Solution:
+#     def solveSudoku(self, A: list[list[str]]) -> None:
+#         """
+#         Do not return anything, modify board in-place instead.
+#         """
+        
+#         self.fin=[]         #To store final result
+        
+#         #Sets to keep track of invalid number
+#         right = [set() for _ in range(9)]                               #Horizontally
+#         down = [set() for _ in range(9)]                                #Vertically
+#         cube = [[set() for q in range(3)] for _ in range(3)]            #Sub-block
+        
+        
+#         lis = [[0]*9 for _ in range(9)]
+        
+#         pos = []          #to store places we need to traverse
+        
+#         #To store int values in list named "lis" and 0 in place of "."
+#         for i in range(9):
+#             for j in range(9):
+#                 if A[i][j]=='.':
+#                     pos.append((i,j))
+#                 else:
+#                     right[i].add(int(A[i][j]))
+#                     down[j].add(int(A[i][j]))
+#                     cube[i//3][j//3].add(int(A[i][j]))
+#                     lis[i][j] = int(A[i][j])
+        
+        
+#         #BackTrack
+#         def trav(curr,left):
+#             if left==[]:
+#                 # When everything is placed perfectly
+#                 self.fin=curr
+#                 return 1
+                
+#             i,j = left[0]         #block that we'll be working on
+            
+#             for val in range(1,10):
+#                 if val not in right[i] and val not in down[j] and val not in cube[i//3][j//3]:
+                
+#                     #Add the temporary 'val' in all required sets and lists
+#                     curr[i][j]=val
+#                     right[i].add(val)
+#                     down[j].add(val)
+#                     cube[i//3][j//3].add(val)
+                    
+#                     #Traverse further
+#                     ret = trav(curr,left[1:])
+#                     if ret==1:
+#                         #when we have already found the required sudoku
+#                         return 1
+#                     #Removing the temporary 'val' as it wasn't the desired one
+#                     curr[i][j]=0
+#                     right[i].remove(val)
+#                     down[j].remove(val)
+#                     cube[i//3][j//3].remove(val)
+            
+#             return -1
+        
+#         trav(lis,pos)
+        
+#         #Since we need to modify in place, thus putting the new values to the main list
+#         for i in range(9):
+#             A[i] = list(map(str,self.fin[i]))
+            
+#         return A
+
+
+# 38th problem
+# status: solved
+# class Solution:
+#     def countAndSay(self, n: int) -> str:
+#         res = "1"
+#         for i in range(1, n):
+#             count = 1
+#             new_res = ""
+#             for j in range(0, len(res)-1):
+#                 if res[j] != res[j+1]:
+#                     new_res += f"{count}{res[j]}"
+#                     count = 1
+#                 else:
+#                     count += 1
+#             new_res += f"{count}{res[len(res)-1]}"
+#             res = new_res
+#         return res
