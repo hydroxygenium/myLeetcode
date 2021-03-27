@@ -941,3 +941,48 @@
 #             new_res += f"{count}{res[len(res)-1]}"
 #             res = new_res
 #         return res
+
+
+# 39th problem
+# status: solved
+# from collections import defaultdict
+# class Solution:
+#     def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:
+#         # store all combinations according to their sum
+#         cache = defaultdict(list)
+        
+#         for c in candidates:
+#             if c > target:
+#                 continue
+            
+#             # store candidate
+#             cache[c].append([c])
+            
+#             # get the combinations of all values that candidate can add to and be < target
+#             for i in range(1, target-c+1):
+#                 seen_list = cache[i]
+#                 for seen in seen_list:
+#                     # store new combinations
+#                     cache[c+i].append(seen+[c])  
+    
+#         # return combinations that add to target value            
+#         return cache[target]
+
+
+# 40th problem
+# stauts: solved
+# class Solution:
+#     def combinationSum2(self, candidates: list[int], target: int) -> list[list[int]]:
+#         def dfs( candidates: list[int], target: int, cur_path: list[int], ans: list[list[list[int]]] ):
+#             if target < 0: return
+#             if target == 0:
+#                 ans.append( cur_path )
+#                 return
+#             for index, num in enumerate(candidates):
+#                 if index > 0 and candidates[index] == candidates[index - 1]: continue
+#                 if num > target: continue
+#                 dfs( candidates[index + 1:], target - num, cur_path + [num], ans )
+                
+#         ans = []
+#         dfs ( sorted([x for x in candidates if x <= target]), target, [], ans )
+#         return ans
