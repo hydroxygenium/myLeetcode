@@ -986,3 +986,115 @@
 #         ans = []
 #         dfs ( sorted([x for x in candidates if x <= target]), target, [], ans )
 #         return ans
+
+
+# 41th problem
+# status: solved
+# class Solution:
+#     def firstMissingPositive(self, nums: list[int]) -> int:
+#         setnums = set(nums)
+#         for i in range(1,301):
+#             if i not in setnums:
+#                 return i
+
+
+# 42th problem
+# status:solved
+# class Solution:
+#     def trap(self, height: list[int]) -> int:
+#         left = right = 0
+        
+#         left_h = []
+#         right_h = []
+        
+#         for value in height:
+#             left = max(value,left)
+#             left_h.append(left)
+            
+#         for value in height[::-1]:
+#             right = max(value,right)
+#             right_h.append(right)
+        
+#         right_h = right_h[::-1]
+        
+#         output = 0
+        
+#         for i in range(len(height)):
+#             output += min(left_h[i],right_h[i])-height[i]
+            
+#         return output
+
+
+# 43th problem
+# status: solved
+# class Solution:
+#     def multiply(self, num1: str, num2: str) -> str:
+#         if num1 == '0' or num2 == '0':
+#             return '0'
+#         n1 = n2 = 0
+#         strToIntDict = {'0': 0,
+#                         '1': 1,
+#                         '2': 2,
+#                         '3': 3,
+#                         '4': 4,
+#                         '5': 5,
+#                         '6': 6,
+#                         '7': 7,
+#                         '8': 8,
+#                         '9': 9,}
+        
+#         intToStrDict = {0: '0',
+#                         1: '1',
+#                         2: '2',
+#                         3: '3',
+#                         4: '4',
+#                         5: '5',
+#                         6: '6',
+#                         7: '7',
+#                         8: '8',
+#                         9: '9',}
+        
+#         for ind, val in enumerate(num1[::-1]):
+#             n1 += strToIntDict[val] * 10**ind
+#         for ind1, val1 in enumerate(num2[::-1]):
+#             n2 += strToIntDict[val1] * 10**ind1
+        
+#         n = n1*n2
+        
+#         res = ''
+#         while n > 0:
+#             res += intToStrDict[n%10]
+#             n = n//10
+#         return res[::-1]
+
+
+# 44th problem
+# status: solved
+# class Solution:
+#     def isMatch(self, s, p):
+#         """
+#         :type s: str
+#         :type p: str
+#         :rtype: bool
+#         """
+        
+#         dp = [[False for i in range(len(p)+1)] for j in range(len(s)+1)]
+#         dp[0][0] = True
+        
+#         s = "#" + s
+#         p = "#" + p
+        
+#         for j in range(1, len(dp[0])):
+#             if p[j] == "*":
+#                 dp[0][j] = dp[0][j-1]
+        
+
+        
+#         for i in range(1, len(dp)):
+#             for j in range(1, len(dp[0])):
+#                 if s[i] == p[j] or p[j] == "?":
+#                     dp[i][j] = dp[i-1][j-1]
+#                 elif p[j] == "*":
+#                     dp[i][j] = (dp[i-1][j-1] or dp[i][j-1] or dp[i-1][j])
+
+#         return dp[-1][-1]
