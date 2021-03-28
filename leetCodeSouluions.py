@@ -1098,3 +1098,33 @@
 #                     dp[i][j] = (dp[i-1][j-1] or dp[i][j-1] or dp[i-1][j])
 
 #         return dp[-1][-1]
+
+
+# 45th problem 
+# status: not solved
+# class Solution:    
+#     def jump(self, nums: list[int]) -> int:
+        
+#         OPT = [0]
+        
+#         for i in range(1, len(nums)):
+#             minval = len(nums)
+#             for j in range(0, i):
+#                 if j + nums[j]>=i:
+#                     val = 1 + OPT[j]
+#                     if val<minval:
+#                         minval=val
+#             OPT.append(minval)
+            
+#         return OPT[-1]
+
+
+# 46th problem
+# status: solved
+# from itertools import permutations as perms
+# class Solution:
+#     def permute(self, nums: list[int]) -> list[list[int]]:
+#         out = []
+#         for nums in perms(nums):
+#             out.append(list(nums))
+#         return out
