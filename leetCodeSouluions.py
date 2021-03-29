@@ -1128,3 +1128,38 @@
 #         for nums in perms(nums):
 #             out.append(list(nums))
 #         return out
+
+
+# 48th problem
+# status: solved
+# class Solution:
+#     def rotate(self, matrix: list[list[int]]) -> None:
+#         """
+#         Do not return anything, modify matrix in-place instead.
+#         """
+#         ln = len(matrix)
+
+#         if not ln or ln==1:
+#             return None
+
+#         l = [[k[i] for k in matrix] for i in range(ln)]
+
+#         for j in range(ln):
+#             matrix[j] = l[j][::-1]
+
+#         return matrix
+
+
+# 49th problem
+# status: not solved
+# class Solution:
+#     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+#         hashed_strs = {}
+#         for i,v in enumerate(strs):
+#             s = "".join(sorted(v))
+#             if s in hashed_strs:
+#                 hashed_strs[s].append(v)
+#             else:
+#                 hashed_strs[s] = [v]
+        
+#         return [x for x in hashed_strs.values()]
